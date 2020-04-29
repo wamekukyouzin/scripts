@@ -17,8 +17,11 @@ Script {
     	}
     	
     	if (action == "#+")
-            script.noteTextEditWrite(currentSelectedText.replace(/^\#/gm, "##"))
-	    
+    	    if (currentSelectedText.indexOf("#") == -1) {
+    	    	script.noteTextEditWrite(currentSelectedText.replace(/^/gm, "# "))
+    	    } else {
+	            script.noteTextEditWrite(currentSelectedText.replace(/^\#/gm, "##"))
+            }	    
         if (action == "#-")
             script.noteTextEditWrite(currentSelectedText.replace(/^\#\#/gm, "#"))
     }
